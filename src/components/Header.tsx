@@ -20,11 +20,7 @@ const Header = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <img 
-              src="/lovable-uploads/610b27c6-0be9-43b4-b228-49811a215cec.png" 
-              alt="Lucky Intelligence Logo" 
-              className="h-10 w-auto"
-            />
+            <h1 className="text-2xl font-bold text-gradient">Lucky Intelligence</h1>
           </div>
 
           {/* Desktop Navigation */}
