@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Mail, Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Mail, Send, CheckCircle, AlertCircle, Loader2, Sparkles } from 'lucide-react';
 
 interface FormData {
   nombre: string;
@@ -26,6 +26,7 @@ const ContactSectionAlternative = () => {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [showSuccessAnimation, setShowSuccessAnimation] = useState(false);
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -117,7 +118,13 @@ const ContactSectionAlternative = () => {
       if (response.ok) {
         console.log('Formulario enviado exitosamente');
         setSubmitStatus('success');
+        setShowSuccessAnimation(true);
         resetForm();
+        
+        // Ocultar la animación después de 3 segundos
+        setTimeout(() => {
+          setShowSuccessAnimation(false);
+        }, 3000);
       } else {
         throw new Error('Error en el servidor');
       }
@@ -159,21 +166,51 @@ const ContactSectionAlternative = () => {
             <div className="bg-card rounded-lg p-8 shadow-md border border-border">
               {/* Status Messages */}
               {submitStatus === 'success' && (
-                <div className="mb-6 p-4 bg-success/10 border border-success/20 rounded-md flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-success" />
+                <div className={`mb-6 p-6 bg-gradient-to-r from-success/10 to-primary/5 border border-success/20 rounded-lg flex flex-col items-center text-center gap-4 transition-all duration-500 ${showSuccessAnimation ? 'scale-105 shadow-lg' : ''}`}>
+                  <div className={`w-16 h-16 bg-success/20 rounded-full flex items-center justify-center transition-all duration-300 ${showSuccessAnimation ? 'scale-110' : ''}`}>
+                    <CheckCircle className="w-8 h-8 text-success" />
+                  </div>
                   <div>
-                    <p className="font-medium text-success">¡Mensaje enviado exitosamente!</p>
-                    <p className="text-sm text-success/80">Nos pondremos en contacto contigo pronto.</p>
+                    <div className="flex items-center justify-center gap-2 mb-2">
+                      <h3 className="text-xl font-bold text-success">¡Consulta Enviada Exitosamente!</h3>
+                      {showSuccessAnimation && <Sparkles className="w-5 h-5 text-success animate-pulse" />}
+                    </div>
+                    <p className="text-success/80 mb-3">
+                      Gracias por contactarnos. Nuestro equipo de especialistas revisará tu consulta y te responderá en menos de 24 horas.
+                    </p>
+                    <div className="bg-success/5 rounded-md p-3 border border-success/10">
+                      <p className="text-sm text-success/70">
+                        <strong>Próximos pasos:</strong> Te enviaremos un email de confirmación y uno de nuestros expertos se pondrá en contacto contigo para discutir tus necesidades específicas.
+                      </p>
+                    </div>
+                    <div className="mt-4 p-2 bg-success/10 rounded-md">
+                      <p className="text-xs text-success/60">
+                        📧 Email de confirmación enviado • ⏰ Respuesta en 24h • 👨‍💼 Asesoría personalizada
+                      </p>
+                    </div>
                   </div>
                 </div>
               )}
 
               {submitStatus === 'error' && (
-                <div className="mb-6 p-4 bg-destructive/10 border border-destructive/20 rounded-md flex items-center gap-3">
-                  <AlertCircle className="w-5 h-5 text-destructive" />
+                <div className="mb-6 p-6 bg-gradient-to-r from-destructive/10 to-red-500/5 border border-destructive/20 rounded-lg flex flex-col items-center text-center gap-4">
+                  <div className="w-16 h-16 bg-destructive/20 rounded-full flex items-center justify-center">
+                    <AlertCircle className="w-8 h-8 text-destructive" />
+                  </div>
                   <div>
-                    <p className="font-medium text-destructive">Error al enviar el mensaje</p>
-                    <p className="text-sm text-destructive/80">Por favor intenta nuevamente o contáctanos directamente.</p>
+                    <h3 className="text-xl font-bold text-destructive mb-2">Error al Enviar la Consulta</h3>
+                    <p className="text-destructive/80 mb-3">
+                      Lo sentimos, hubo un problema al enviar tu mensaje. Por favor intenta nuevamente o contáctanos directamente.
+                    </p>
+                    <div className="bg-destructive/5 rounded-md p-3 border border-destructive/10">
+                      <p className="text-sm text-destructive/70">
+                        <strong>Alternativas de contacto:</strong> Puedes escribirnos directamente a{' '}
+                        <a href="mailto:contacto@luckyintelligence.com" className="text-primary hover:underline">
+                          contacto@luckyintelligence.com
+                        </a>{' '}
+                        o llamarnos al número de contacto.
+                      </p>
+                    </div>
                   </div>
                 </div>
               )}
