@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Mail, Send, CheckCircle, AlertCircle, Loader2, Sparkles } from 'lucide-react';
+import { useState } from 'react';
+import { Mail, Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 
 interface FormData {
   nombre: string;
@@ -26,7 +26,6 @@ const ContactSectionAlternative = () => {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  const [showSuccessAnimation, setShowSuccessAnimation] = useState(false);
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -98,31 +97,8 @@ const ContactSectionAlternative = () => {
     setSubmitStatus('idle');
 
     try {
-      // Simular envío exitoso para mostrar el mensaje (modo de prueba)
-      console.log('Datos del formulario:', formData);
-      
-      // Simular delay de envío
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // Mostrar mensaje de éxito inmediatamente
-      console.log('Formulario enviado exitosamente');
-      setSubmitStatus('success');
-      setShowSuccessAnimation(true);
-      resetForm();
-      
-      // Ocultar la animación después de 3 segundos
-      setTimeout(() => {
-        setShowSuccessAnimation(false);
-      }, 3000);
-      
-      // Resetear el estado de éxito después de 8 segundos
-      setTimeout(() => {
-        setSubmitStatus('idle');
-      }, 8000);
-      
-      // Comentado temporalmente para pruebas - descomenta para usar Formspree real
-      /*
-      const formspreeEndpoint = 'https://formspree.io/f/xqaljgeq';
+      // Opción 1: Usar Formspree (gratuito, hasta 50 submissions por mes)
+      const formspreeEndpoint = 'https://formspree.io/f/xqaljgeq'; // Reemplaza con tu Form ID
       
       const response = await fetch(formspreeEndpoint, {
         method: 'POST',
@@ -141,25 +117,21 @@ const ContactSectionAlternative = () => {
       if (response.ok) {
         console.log('Formulario enviado exitosamente');
         setSubmitStatus('success');
-        setShowSuccessAnimation(true);
         resetForm();
-        
-        setTimeout(() => {
-          setShowSuccessAnimation(false);
-        }, 3000);
       } else {
         throw new Error('Error en el servidor');
       }
       
+      // Resetear el estado de éxito después de 5 segundos
       setTimeout(() => {
         setSubmitStatus('idle');
       }, 5000);
-      */
       
     } catch (error) {
       console.error('Error al enviar formulario:', error);
       setSubmitStatus('error');
       
+      // Resetear el estado de error después de 5 segundos
       setTimeout(() => {
         setSubmitStatus('idle');
       }, 5000);
@@ -187,103 +159,21 @@ const ContactSectionAlternative = () => {
             <div className="bg-card rounded-lg p-8 shadow-md border border-border">
               {/* Status Messages */}
               {submitStatus === 'success' && (
-                <div className={`mb-6 p-8 bg-gradient-to-br from-success/15 via-primary/10 to-success/20 border-2 border-success/30 rounded-xl flex flex-col items-center text-center gap-6 transition-all duration-700 ${showSuccessAnimation ? 'scale-105 shadow-2xl shadow-success/20' : ''}`}>
-                  {/* Header con animación */}
-                  <div className="flex items-center justify-center gap-3 mb-2">
-                    <div className={`w-20 h-20 bg-gradient-to-br from-success/30 to-primary/20 rounded-full flex items-center justify-center transition-all duration-500 ${showSuccessAnimation ? 'scale-110 rotate-12' : ''}`}>
-                      <CheckCircle className="w-10 h-10 text-success" />
-                    </div>
-                    {showSuccessAnimation && (
-                      <div className="flex gap-1">
-                        <Sparkles className="w-6 h-6 text-success animate-bounce" style={{ animationDelay: '0ms' }} />
-                        <Sparkles className="w-6 h-6 text-success animate-bounce" style={{ animationDelay: '200ms' }} />
-                        <Sparkles className="w-6 h-6 text-success animate-bounce" style={{ animationDelay: '400ms' }} />
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Título principal */}
+                <div className="mb-6 p-4 bg-success/10 border border-success/20 rounded-md flex items-center gap-3">
+                  <CheckCircle className="w-5 h-5 text-success" />
                   <div>
-                    <h3 className="text-2xl font-bold text-success mb-3 bg-gradient-to-r from-success to-primary bg-clip-text text-transparent">
-                      ¡Consulta Enviada Exitosamente!
-                    </h3>
-                    <p className="text-success/90 text-lg font-medium mb-4">
-                      Gracias por confiar en Lucky Intelligence
-                    </p>
-                  </div>
-
-                  {/* Mensaje principal */}
-                  <div className="bg-white/50 backdrop-blur-sm rounded-lg p-4 border border-success/20">
-                    <p className="text-success/80 mb-3 leading-relaxed">
-                      Tu consulta ha sido recibida y nuestro equipo de especialistas en telecomunicaciones la revisará con atención. 
-                      Nos pondremos en contacto contigo en menos de 24 horas para discutir tus necesidades específicas.
-                    </p>
-                  </div>
-
-                  {/* Próximos pasos */}
-                  <div className="bg-gradient-to-r from-success/10 to-primary/10 rounded-lg p-4 border border-success/20 w-full">
-                    <h4 className="font-semibold text-success mb-3 flex items-center gap-2">
-                      <span className="w-2 h-2 bg-success rounded-full"></span>
-                      Próximos Pasos
-                    </h4>
-                    <div className="space-y-2 text-sm text-success/70">
-                      <div className="flex items-center gap-2">
-                        <span className="text-success">📧</span>
-                        <span>Email de confirmación enviado a tu bandeja de entrada</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-success">⏰</span>
-                        <span>Respuesta de nuestro equipo en menos de 24 horas</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-success">👨‍💼</span>
-                        <span>Asesoría personalizada y propuesta a medida</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Información adicional */}
-                  <div className="bg-success/5 rounded-lg p-3 border border-success/10 w-full">
-                    <div className="flex items-center justify-center gap-4 text-xs text-success/60">
-                      <span className="flex items-center gap-1">
-                        <span className="w-2 h-2 bg-success rounded-full animate-pulse"></span>
-                        Respuesta Garantizada
-                      </span>
-                      <span>•</span>
-                      <span>Asesoría Gratuita</span>
-                      <span>•</span>
-                      <span>Propuesta Sin Compromiso</span>
-                    </div>
-                  </div>
-
-                  {/* Mensaje de agradecimiento */}
-                  <div className="mt-2">
-                    <p className="text-sm text-success/70 italic">
-                      "Transformando telecomunicaciones con inteligencia artificial"
-                    </p>
+                    <p className="font-medium text-success">¡Mensaje enviado exitosamente!</p>
+                    <p className="text-sm text-success/80">Nos pondremos en contacto contigo pronto.</p>
                   </div>
                 </div>
               )}
 
               {submitStatus === 'error' && (
-                <div className="mb-6 p-6 bg-gradient-to-r from-destructive/10 to-red-500/5 border border-destructive/20 rounded-lg flex flex-col items-center text-center gap-4">
-                  <div className="w-16 h-16 bg-destructive/20 rounded-full flex items-center justify-center">
-                    <AlertCircle className="w-8 h-8 text-destructive" />
-                  </div>
+                <div className="mb-6 p-4 bg-destructive/10 border border-destructive/20 rounded-md flex items-center gap-3">
+                  <AlertCircle className="w-5 h-5 text-destructive" />
                   <div>
-                    <h3 className="text-xl font-bold text-destructive mb-2">Error al Enviar la Consulta</h3>
-                    <p className="text-destructive/80 mb-3">
-                      Lo sentimos, hubo un problema al enviar tu mensaje. Por favor intenta nuevamente o contáctanos directamente.
-                    </p>
-                    <div className="bg-destructive/5 rounded-md p-3 border border-destructive/10">
-                      <p className="text-sm text-destructive/70">
-                        <strong>Alternativas de contacto:</strong> Puedes escribirnos directamente a{' '}
-                        <a href="mailto:contacto@luckyintelligence.com" className="text-primary hover:underline">
-                          contacto@luckyintelligence.com
-                        </a>{' '}
-                        o llamarnos al número de contacto.
-                      </p>
-                    </div>
+                    <p className="font-medium text-destructive">Error al enviar el mensaje</p>
+                    <p className="text-sm text-destructive/80">Por favor intenta nuevamente o contáctanos directamente.</p>
                   </div>
                 </div>
               )}
