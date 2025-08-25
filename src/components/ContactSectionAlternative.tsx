@@ -98,8 +98,31 @@ const ContactSectionAlternative = () => {
     setSubmitStatus('idle');
 
     try {
-      // Opción 1: Usar Formspree (gratuito, hasta 50 submissions por mes)
-      const formspreeEndpoint = 'https://formspree.io/f/xqaljgeq'; // Reemplaza con tu Form ID
+      // Simular envío exitoso para mostrar el mensaje (modo de prueba)
+      console.log('Datos del formulario:', formData);
+      
+      // Simular delay de envío
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // Mostrar mensaje de éxito inmediatamente
+      console.log('Formulario enviado exitosamente');
+      setSubmitStatus('success');
+      setShowSuccessAnimation(true);
+      resetForm();
+      
+      // Ocultar la animación después de 3 segundos
+      setTimeout(() => {
+        setShowSuccessAnimation(false);
+      }, 3000);
+      
+      // Resetear el estado de éxito después de 8 segundos
+      setTimeout(() => {
+        setSubmitStatus('idle');
+      }, 8000);
+      
+      // Comentado temporalmente para pruebas - descomenta para usar Formspree real
+      /*
+      const formspreeEndpoint = 'https://formspree.io/f/xqaljgeq';
       
       const response = await fetch(formspreeEndpoint, {
         method: 'POST',
@@ -121,7 +144,6 @@ const ContactSectionAlternative = () => {
         setShowSuccessAnimation(true);
         resetForm();
         
-        // Ocultar la animación después de 3 segundos
         setTimeout(() => {
           setShowSuccessAnimation(false);
         }, 3000);
@@ -129,16 +151,15 @@ const ContactSectionAlternative = () => {
         throw new Error('Error en el servidor');
       }
       
-      // Resetear el estado de éxito después de 5 segundos
       setTimeout(() => {
         setSubmitStatus('idle');
       }, 5000);
+      */
       
     } catch (error) {
       console.error('Error al enviar formulario:', error);
       setSubmitStatus('error');
       
-      // Resetear el estado de error después de 5 segundos
       setTimeout(() => {
         setSubmitStatus('idle');
       }, 5000);
