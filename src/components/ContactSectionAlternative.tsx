@@ -166,28 +166,80 @@ const ContactSectionAlternative = () => {
             <div className="bg-card rounded-lg p-8 shadow-md border border-border">
               {/* Status Messages */}
               {submitStatus === 'success' && (
-                <div className={`mb-6 p-6 bg-gradient-to-r from-success/10 to-primary/5 border border-success/20 rounded-lg flex flex-col items-center text-center gap-4 transition-all duration-500 ${showSuccessAnimation ? 'scale-105 shadow-lg' : ''}`}>
-                  <div className={`w-16 h-16 bg-success/20 rounded-full flex items-center justify-center transition-all duration-300 ${showSuccessAnimation ? 'scale-110' : ''}`}>
-                    <CheckCircle className="w-8 h-8 text-success" />
+                <div className={`mb-6 p-8 bg-gradient-to-br from-success/15 via-primary/10 to-success/20 border-2 border-success/30 rounded-xl flex flex-col items-center text-center gap-6 transition-all duration-700 ${showSuccessAnimation ? 'scale-105 shadow-2xl shadow-success/20' : ''}`}>
+                  {/* Header con animación */}
+                  <div className="flex items-center justify-center gap-3 mb-2">
+                    <div className={`w-20 h-20 bg-gradient-to-br from-success/30 to-primary/20 rounded-full flex items-center justify-center transition-all duration-500 ${showSuccessAnimation ? 'scale-110 rotate-12' : ''}`}>
+                      <CheckCircle className="w-10 h-10 text-success" />
+                    </div>
+                    {showSuccessAnimation && (
+                      <div className="flex gap-1">
+                        <Sparkles className="w-6 h-6 text-success animate-bounce" style={{ animationDelay: '0ms' }} />
+                        <Sparkles className="w-6 h-6 text-success animate-bounce" style={{ animationDelay: '200ms' }} />
+                        <Sparkles className="w-6 h-6 text-success animate-bounce" style={{ animationDelay: '400ms' }} />
+                      </div>
+                    )}
                   </div>
+
+                  {/* Título principal */}
                   <div>
-                    <div className="flex items-center justify-center gap-2 mb-2">
-                      <h3 className="text-xl font-bold text-success">¡Consulta Enviada Exitosamente!</h3>
-                      {showSuccessAnimation && <Sparkles className="w-5 h-5 text-success animate-pulse" />}
-                    </div>
-                    <p className="text-success/80 mb-3">
-                      Gracias por contactarnos. Nuestro equipo de especialistas revisará tu consulta y te responderá en menos de 24 horas.
+                    <h3 className="text-2xl font-bold text-success mb-3 bg-gradient-to-r from-success to-primary bg-clip-text text-transparent">
+                      ¡Consulta Enviada Exitosamente!
+                    </h3>
+                    <p className="text-success/90 text-lg font-medium mb-4">
+                      Gracias por confiar en Lucky Intelligence
                     </p>
-                    <div className="bg-success/5 rounded-md p-3 border border-success/10">
-                      <p className="text-sm text-success/70">
-                        <strong>Próximos pasos:</strong> Te enviaremos un email de confirmación y uno de nuestros expertos se pondrá en contacto contigo para discutir tus necesidades específicas.
-                      </p>
+                  </div>
+
+                  {/* Mensaje principal */}
+                  <div className="bg-white/50 backdrop-blur-sm rounded-lg p-4 border border-success/20">
+                    <p className="text-success/80 mb-3 leading-relaxed">
+                      Tu consulta ha sido recibida y nuestro equipo de especialistas en telecomunicaciones la revisará con atención. 
+                      Nos pondremos en contacto contigo en menos de 24 horas para discutir tus necesidades específicas.
+                    </p>
+                  </div>
+
+                  {/* Próximos pasos */}
+                  <div className="bg-gradient-to-r from-success/10 to-primary/10 rounded-lg p-4 border border-success/20 w-full">
+                    <h4 className="font-semibold text-success mb-3 flex items-center gap-2">
+                      <span className="w-2 h-2 bg-success rounded-full"></span>
+                      Próximos Pasos
+                    </h4>
+                    <div className="space-y-2 text-sm text-success/70">
+                      <div className="flex items-center gap-2">
+                        <span className="text-success">📧</span>
+                        <span>Email de confirmación enviado a tu bandeja de entrada</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-success">⏰</span>
+                        <span>Respuesta de nuestro equipo en menos de 24 horas</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-success">👨‍💼</span>
+                        <span>Asesoría personalizada y propuesta a medida</span>
+                      </div>
                     </div>
-                    <div className="mt-4 p-2 bg-success/10 rounded-md">
-                      <p className="text-xs text-success/60">
-                        📧 Email de confirmación enviado • ⏰ Respuesta en 24h • 👨‍💼 Asesoría personalizada
-                      </p>
+                  </div>
+
+                  {/* Información adicional */}
+                  <div className="bg-success/5 rounded-lg p-3 border border-success/10 w-full">
+                    <div className="flex items-center justify-center gap-4 text-xs text-success/60">
+                      <span className="flex items-center gap-1">
+                        <span className="w-2 h-2 bg-success rounded-full animate-pulse"></span>
+                        Respuesta Garantizada
+                      </span>
+                      <span>•</span>
+                      <span>Asesoría Gratuita</span>
+                      <span>•</span>
+                      <span>Propuesta Sin Compromiso</span>
                     </div>
+                  </div>
+
+                  {/* Mensaje de agradecimiento */}
+                  <div className="mt-2">
+                    <p className="text-sm text-success/70 italic">
+                      "Transformando telecomunicaciones con inteligencia artificial"
+                    </p>
                   </div>
                 </div>
               )}
