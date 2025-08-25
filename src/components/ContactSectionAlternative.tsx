@@ -1,7 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Mail, Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
-import emailjs from '@emailjs/browser';
-import { EMAILJS_CONFIG } from '@/lib/emailjs-config';
 
 interface FormData {
   nombre: string;
@@ -17,7 +15,7 @@ interface FormErrors {
   mensaje?: string;
 }
 
-const ContactSection = () => {
+const ContactSectionAlternative = () => {
   const [formData, setFormData] = useState<FormData>({
     nombre: '',
     email: '',
@@ -99,29 +97,30 @@ const ContactSection = () => {
     setSubmitStatus('idle');
 
     try {
-      // Configurar EmailJS
-      emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
+      // Opción 1: Usar Formspree (gratuito, hasta 50 submissions por mes)
+      const formspreeEndpoint = 'https://formspree.io/f/YOUR_FORM_ID'; // Reemplaza con tu Form ID
       
-      // Preparar los datos del template
-      const templateParams = {
-        nombre: formData.nombre,
-        email: formData.email,
-        empresa: formData.empresa || 'No especificada',
-        mensaje: formData.mensaje || 'Sin mensaje adicional',
-        fecha: new Date().toLocaleString('es-MX')
-      };
+      const response = await fetch(formspreeEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          nombre: formData.nombre,
+          email: formData.email,
+          empresa: formData.empresa || 'No especificada',
+          mensaje: formData.mensaje || 'Sin mensaje adicional',
+          fecha: new Date().toLocaleString('es-MX')
+        })
+      });
 
-      // Enviar email usando EmailJS
-      const response = await emailjs.send(
-        EMAILJS_CONFIG.SERVICE_ID,
-        EMAILJS_CONFIG.TEMPLATE_ID,
-        templateParams
-      );
-
-      console.log('Email enviado exitosamente:', response);
-      
-      setSubmitStatus('success');
-      resetForm();
+      if (response.ok) {
+        console.log('Formulario enviado exitosamente');
+        setSubmitStatus('success');
+        resetForm();
+      } else {
+        throw new Error('Error en el servidor');
+      }
       
       // Resetear el estado de éxito después de 5 segundos
       setTimeout(() => {
@@ -335,4 +334,4 @@ const ContactSection = () => {
   );
 };
 
-export default ContactSection;
+export default ContactSectionAlternative;
