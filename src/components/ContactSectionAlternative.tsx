@@ -98,7 +98,7 @@ const ContactSectionAlternative = () => {
 
     try {
       // Opción 1: Usar Formspree (gratuito, hasta 50 submissions por mes)
-      const formspreeEndpoint = 'https://formspree.io/f/YOUR_FORM_ID'; // Reemplaza con tu Form ID
+      const formspreeEndpoint = 'https://formspree.io/f/xqaljgeq'; // Reemplaza con tu Form ID
       
       const response = await fetch(formspreeEndpoint, {
         method: 'POST',
