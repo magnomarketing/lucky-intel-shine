@@ -40,7 +40,7 @@ const TechnologiesSection = () => {
                 Alestra
               </div>
               <div className="text-xs text-muted-foreground mt-1">
-                Telecommunications
+                Telecom 
               </div>
             </div>
             
@@ -49,7 +49,7 @@ const TechnologiesSection = () => {
                 Wisp MX
               </div>
               <div className="text-xs text-muted-foreground mt-1">
-                Wireless Solutions
+              Asociacion <><br /></>Méxicana
               </div>
             </div>
             

@@ -1,13 +1,25 @@
 import heroImage from '@/assets/hero-telecom.jpg';
+import { Particles } from "@/components/magicui/particles";
 
 const HeroSection = () => {
   return (
     <section id="inicio" className="relative min-h-screen flex items-center gradient-subtle">
-      {/* Background Image Overlay */}
+      {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
         style={{ backgroundImage: `url(${heroImage})` }}
       />
+      
+      {/* Particles Background */}
+      <div className="absolute inset-0 overflow-hidden h-screen">
+        <Particles 
+          quantity={100}
+          staticity={50}
+          ease={50}
+          size={0.5}
+          color="#1e40af"
+        />
+      </div>
       
       <div className="container mx-auto px-4 lg:px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
