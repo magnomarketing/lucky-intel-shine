@@ -2,11 +2,11 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const navigationLinks = [
-    { href: '#inicio', label: 'Inicio' },
-    { href: '#servicios', label: 'Servicios' },
-    { href: '#soluciones', label: 'Soluciones' },
-    { href: '#nosotros', label: 'Nosotros' },
-    { href: '#contacto', label: 'Contacto' },
+    { href: '/#inicio', label: 'Inicio' },
+    { href: '/#servicios', label: 'Servicios' },
+    { href: '/#soluciones', label: 'Soluciones' },
+    { href: '/#nosotros', label: 'Nosotros' },
+    { href: '/#contacto', label: 'Contacto' },
   ];
 
   const legalLinks = [

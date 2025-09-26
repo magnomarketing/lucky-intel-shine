@@ -41,13 +41,13 @@ const HeroSection = () => {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
             <a
-              href="#contacto"
+              href="/#contacto"
               className="btn-warning px-8 py-4 rounded-lg font-semibold text-lg w-full sm:w-auto"
             >
               Contacta un Asesor
             </a>
             <a
-              href="#servicios"
+              href="/#servicios"
               className="btn-outline px-8 py-4 rounded-lg font-semibold text-lg w-full sm:w-auto"
             >
               Ver Servicios

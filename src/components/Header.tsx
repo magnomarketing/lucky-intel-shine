@@ -7,11 +7,11 @@ const Header = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   const navItems = [
-    { href: '#inicio', label: 'Inicio' },
-    { href: '#servicios', label: 'Servicios' },
-    { href: '#soluciones', label: 'Soluciones' },
-    { href: '#nosotros', label: 'Nosotros' },
-    { href: '#contacto', label: 'Contacto' },
+    { href: '/#inicio', label: 'Inicio' },
+    { href: '/#servicios', label: 'Servicios' },
+    { href: '/#soluciones', label: 'Soluciones' },
+    { href: '/#nosotros', label: 'Nosotros' },
+    { href: '/#contacto', label: 'Contacto' },
   ];
 
   return (
@@ -43,7 +43,7 @@ const Header = () => {
           {/* CTA Button */}
           <div className="hidden md:block">
             <a
-              href="#contacto"
+              href="/#contacto"
               className="btn-primary px-6 py-2 rounded-md font-medium"
             >
               Contacta un Asesor
@@ -79,7 +79,7 @@ const Header = () => {
                 </a>
               ))}
               <a
-                href="#contacto"
+                href="/#contacto"
                 className="btn-primary px-6 py-2 rounded-md font-medium inline-block text-center mt-4"
                 onClick={() => setIsMenuOpen(false)}
               >
