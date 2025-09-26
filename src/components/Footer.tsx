@@ -9,10 +9,14 @@ const Footer = () => {
     { href: '#contacto', label: 'Contacto' },
   ];
 
+  const legalLinks = [
+    { href: '/policies/privacy', label: 'Política de Privacidad' },
+  ];
+
   return (
     <footer className="bg-primary text-primary-foreground py-12">
       <div className="container mx-auto px-4 lg:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
             <h3 className="text-2xl font-bold">Lucky Intelligence</h3>
@@ -56,6 +60,22 @@ const Footer = () => {
               <div>LuckyIntelligence IA</div>
               <div>Lucky Security Scan</div>
             </div>
+          </div>
+
+          {/* Legal Links */}
+          <div className="space-y-4">
+            <h4 className="text-lg font-semibold">Legal</h4>
+            <nav className="flex flex-col space-y-2">
+              {legalLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
           </div>
         </div>
 
