@@ -426,14 +426,25 @@ const LuckyNetFinder = () => {
                   <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center">
                     <MessageSquare className="w-10 h-10 text-primary" />
                   </div>
-                  <div>
-                    <h3 className="text-2xl font-bold mb-2">Haz clic en el chat flotante</h3>
+                  <div className="text-center">
+                    <h3 className="text-2xl font-bold mb-2">Conversa con Lucky</h3>
                     <p className="text-muted-foreground mb-6">
-                      Nuestro asistente Lucky está listo para ayudarte. <br />
-                      Busca el ícono del chat en la esquina inferior derecha.
+                      Nuestro asistente inteligente está listo para ayudarte a encontrar<br />
+                      la mejor opción de internet para tu negocio.
                     </p>
                   </div>
-                 
+                  
+                  {/* Goeva Chat Iframe */}
+                  <div className="w-full max-w-md mx-auto">
+                    <iframe 
+                      src="https://www.goeva.ai/widget?agent=73dbdf75-ce21-462a-ac9d-c0df95819bae&origin=https://www.goeva.ai"
+                      width="100%"
+                      height="600"
+                      className="border-0 rounded-xl shadow-md"
+                      title="Lucky Chat Assistant"
+                      allow="microphone; camera; clipboard-write"
+                    />
+                  </div>
                 </div>
               </motion.div>
             </motion.div>
