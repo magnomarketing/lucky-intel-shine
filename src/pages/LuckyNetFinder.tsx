@@ -59,6 +59,22 @@ const LuckyNetFinder = () => {
     };
   }, []);
 
+  // Manejar el scroll al inicio cuando la página carga
+  useEffect(() => {
+    // Si hay un hash en la URL, ir a esa sección
+    if (window.location.hash) {
+      setTimeout(() => {
+        const element = document.querySelector(window.location.hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    } else {
+      // Si no hay hash, ir al inicio
+      window.scrollTo(0, 0);
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -443,6 +459,9 @@ const LuckyNetFinder = () => {
                       className="border-0 rounded-xl shadow-md"
                       title="Lucky Chat Assistant"
                       allow="microphone; camera; clipboard-write"
+                      scrolling="no"
+                      tabIndex={-1}
+                      loading="lazy"
                     />
                   </div>
                 </div>
@@ -531,4 +550,3 @@ const LuckyNetFinder = () => {
 };
 
 export default LuckyNetFinder;
-
