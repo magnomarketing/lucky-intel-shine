@@ -22,11 +22,10 @@ import {
 // Declaración de tipo para el widget de Goeva
 declare global {
   interface Window {
-    GoevaWidget?: {
+    goeva?: {
       init: (config: {
         agentId: string;
         position?: string;
-        primaryColor?: string;
       }) => void;
     };
   }
@@ -39,15 +38,13 @@ const LuckyNetFinder = () => {
     const script = document.createElement('script');
     script.src = 'https://www.goeva.ai/widget.js';
     script.async = true;
-    script.defer = true;
     
     // Configurar el widget
     script.onload = () => {
-      if (window.GoevaWidget) {
-        window.GoevaWidget.init({
-          agentId: '73dbdf75-ce21-462a-ac9d-c0df95819bae',
-          position: 'bottom-right', // o 'bottom-left'
-          primaryColor: '#0ea5e9', // Color primario de tu marca
+      if (window.goeva) {
+        window.goeva.init({
+          agentId: 'b8e24ea9-470d-433d-8aa2-f8d1284c80b2',
+          position: 'bottom-right'
         });
       }
     };
