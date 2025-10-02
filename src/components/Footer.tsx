@@ -4,6 +4,7 @@ const Footer = () => {
   const navigationLinks = [
     { href: '/#inicio', label: 'Inicio' },
     { href: '/#servicios', label: 'Servicios' },
+    { href: '/lucky-net-finder', label: 'Lucky Net Finder' },
     { href: '/#soluciones', label: 'Soluciones' },
     { href: '/#nosotros', label: 'Nosotros' },
     { href: '/#contacto', label: 'Contacto' },

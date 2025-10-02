@@ -53,13 +53,16 @@
     
     <script type="module" src="/src/main.tsx"></script>
     
-    <!-- Goeva Widget -->
+    <!-- Goeva Widget - Solo se muestra en páginas que no sean Lucky Net Finder -->
     <script src="https://www.goeva.ai/widget.js"></script>
     <script>
-      goeva.init({
-        agentId: '73dbdf75-ce21-462a-ac9d-c0df95819bae',
-        position: 'bottom-right'
-      });
+      // Inicializar Goeva solo si no estamos en la página de Lucky Net Finder
+      if (!window.location.pathname.includes('/lucky-net-finder')) {
+        goeva.init({
+          agentId: '73dbdf75-ce21-462a-ac9d-c0df95819bae',
+          position: 'bottom-right'
+        });
+      }
     </script>
   </body>
 </html>

@@ -126,6 +126,18 @@ All colors MUST be HSL.
     background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--secondary)) 100%);
   }
   
+  .bg-gradient-primary {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  }
+  
+  .bg-gradient-cta {
+    background: linear-gradient(135deg, hsl(var(--warning)) 0%, hsl(var(--primary)) 100%);
+  }
+  
+  .shadow-glow {
+    box-shadow: 0 0 20px hsla(var(--primary), 0.3);
+  }
+  
   .text-gradient {
     background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
     -webkit-background-clip: text;

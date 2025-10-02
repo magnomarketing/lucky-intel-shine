@@ -1,12 +1,21 @@
 import ServiceCard from './ServiceCard';
 
+interface Service {
+  id: number;
+  icon: string;
+  title: string;
+  description: string;
+  link?: string;
+}
+
 const ServicesGrid = () => {
-  const services = [
+  const services: Service[] = [
     {
       id: 1,
       icon: '/icons/luckynetfinder.svg',
       title: "LuckyNet Finder",
-      description: "Herramienta avanzada con IA que accede de forma instantánea a la red más grande de telecomunicaciones en México. Analiza en tiempo real la cobertura de más de 300 proveedores. Optimiza búsqueda de conectividad y obtén las mejores opciones disponibles en cada zona simplificando el proceso de búsqueda y contratación obteniendo los mejores precios así como los mejores tiempos de entrega."
+      description: "Herramienta avanzada con IA que accede de forma instantánea a la red más grande de telecomunicaciones en México. Analiza en tiempo real la cobertura de más de 300 proveedores. Optimiza búsqueda de conectividad y obtén las mejores opciones disponibles en cada zona simplificando el proceso de búsqueda y contratación obteniendo los mejores precios así como los mejores tiempos de entrega.",
+      link: "/lucky-net-finder"
     },
     {
       id: 2,
@@ -61,6 +70,7 @@ const ServicesGrid = () => {
               icon={service.icon}
               title={service.title}
               description={service.description}
+              link={service.link}
             />
           ))}
         </div>

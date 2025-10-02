@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Privacy from "./pages/Privacy";
 import NotFound from "./pages/NotFound";
+import LuckyNetFinder from "./pages/LuckyNetFinder";
 
 const queryClient = new QueryClient();
 
@@ -17,6 +18,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/lucky-net-finder" element={<LuckyNetFinder />} />
           <Route path="/policies/privacy" element={<Privacy />} />
           <Route path="/policies/privacy/" element={<Privacy />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
