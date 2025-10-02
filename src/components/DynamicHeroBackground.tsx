@@ -47,8 +47,7 @@ export const DynamicHeroBackground = () => {
 
   return (
     <div className="absolute inset-0 overflow-hidden">
-      {/* Base Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-50" />
+ 
 
       {/* Animated Connection Lines - Más líneas para conectar nodos */}
       <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
