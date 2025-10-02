@@ -433,14 +433,7 @@ const LuckyNetFinder = () => {
                       Busca el ícono del chat en la esquina inferior derecha.
                     </p>
                   </div>
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <a
-                      href="mailto:contacto@luckyintelligence.com"
-                      className="btn-outline px-8 py-3 rounded-lg font-semibold inline-block"
-                    >
-                      O Enviar Email
-                    </a>
-                  </div>
+                 
                 </div>
               </motion.div>
             </motion.div>
