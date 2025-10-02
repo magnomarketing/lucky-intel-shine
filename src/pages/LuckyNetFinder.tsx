@@ -43,7 +43,7 @@ const LuckyNetFinder = () => {
     script.onload = () => {
       if (window.goeva) {
         window.goeva.init({
-          agentId: 'b8e24ea9-470d-433d-8aa2-f8d1284c80b2',
+          agentId: '73dbdf75-ce21-462a-ac9d-c0df95819bae',
           position: 'bottom-right'
         });
       }
@@ -393,7 +393,7 @@ const LuckyNetFinder = () => {
               className="text-center"
             >
               <h2 className="text-3xl md:text-5xl font-bold mb-4">
-                Descubre tu Mejor Opción de Internet <span className="text-gradient">Hoy</span>
+                Descubre tu Mejor <span className="text-gradient">Opción de Internet</span>
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
                 Conversa con nuestro asistente inteligente Lucky y obtén resultados al instante
