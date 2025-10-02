@@ -114,7 +114,7 @@ export const DynamicHeroBackground = () => {
           key={index}
           animate={{
             scale: [1, 1.3, 1],
-            opacity: [0.3, 0.7, 0.3],
+            opacity: [0.15, 0.4, 0.15],
           }}
           transition={{
             duration: node.duration,
@@ -124,10 +124,10 @@ export const DynamicHeroBackground = () => {
           }}
           className={`absolute w-2 h-2 rounded-full ${
             index % 3 === 0 
-              ? 'bg-primary shadow-lg shadow-primary/50' 
+              ? 'bg-primary shadow-md shadow-primary/30' 
               : index % 3 === 1 
-              ? 'bg-secondary shadow-lg shadow-secondary/50' 
-              : 'bg-accent shadow-lg shadow-accent/50'
+              ? 'bg-secondary shadow-md shadow-secondary/30' 
+              : 'bg-accent shadow-md shadow-accent/30'
           }`}
           style={{
             left: `${node.x}%`,
