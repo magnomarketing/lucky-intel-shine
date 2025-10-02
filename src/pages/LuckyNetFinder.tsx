@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 import { 
   Zap, Search, TrendingUp, Users, Clock, Phone, AlertCircle, 
   MessageSquare, Sparkles, Globe, Shield, CheckCircle, ChevronDown
@@ -11,14 +12,55 @@ import { HowItWorksStep } from "@/components/HowItWorksStep";
 import { DynamicHeroBackground } from "@/components/DynamicHeroBackground";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import GoevaEmbeddedChat from "@/components/GoevaEmbeddedChat";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+
+// Declaración de tipo para el widget de Goeva
+declare global {
+  interface Window {
+    GoevaWidget?: {
+      init: (config: {
+        agentId: string;
+        position?: string;
+        primaryColor?: string;
+      }) => void;
+    };
+  }
+}
+
 const LuckyNetFinder = () => {
+  // Cargar el script de Goeva Widget
+  useEffect(() => {
+    // Crear y agregar el script del widget de Goeva
+    const script = document.createElement('script');
+    script.src = 'https://www.goeva.ai/widget.js';
+    script.async = true;
+    script.defer = true;
+    
+    // Configurar el widget
+    script.onload = () => {
+      if (window.GoevaWidget) {
+        window.GoevaWidget.init({
+          agentId: '73dbdf75-ce21-462a-ac9d-c0df95819bae',
+          position: 'bottom-right', // o 'bottom-left'
+          primaryColor: '#0ea5e9', // Color primario de tu marca
+        });
+      }
+    };
+    
+    document.body.appendChild(script);
+    
+    // Cleanup: remover el script cuando el componente se desmonte
+    return () => {
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-background">
@@ -343,24 +385,24 @@ const LuckyNetFinder = () => {
         </div>
       </section>
 
-      {/* Final CTA with Embedded Chat */}
+      {/* Final CTA */}
       <section id="contacto" className="py-20 bg-gradient-to-br from-primary/10 to-secondary/10">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-12"
+              className="text-center"
             >
               <h2 className="text-3xl md:text-5xl font-bold mb-4">
                 Descubre tu Mejor Opción de Internet <span className="text-gradient">Hoy</span>
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
-                Conversa con nuestro asistente inteligente y obtén resultados al instante
+                Conversa con nuestro asistente inteligente Lucky y obtén resultados al instante
               </p>
 
-              <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground mb-8">
+              <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground mb-12">
                 <div className="flex items-center gap-2">
                   <Shield className="w-4 h-4 text-primary" />
                   <span>100% Gratuito</span>
@@ -374,35 +416,36 @@ const LuckyNetFinder = () => {
                   <span>Respuesta Instantánea</span>
                 </div>
               </div>
-            </motion.div>
 
-            {/* Goeva Embedded Chat */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-            >
-              <GoevaEmbeddedChat />
-            </motion.div>
-
-            {/* Additional CTA */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="text-center mt-8"
-            >
-              <p className="text-muted-foreground mb-4">
-                También puedes contactarnos directamente
-              </p>
-              <a
-                href="mailto:contacto@luckyintelligence.com"
-                className="btn-outline px-8 py-3 rounded-lg font-semibold inline-block"
+              {/* CTA Card */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="bg-card border border-border rounded-2xl shadow-lg p-8 md:p-12"
               >
-                Enviar Email
-              </a>
+                <div className="flex flex-col items-center gap-6">
+                  <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center">
+                    <MessageSquare className="w-10 h-10 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold mb-2">Haz clic en el chat flotante</h3>
+                    <p className="text-muted-foreground mb-6">
+                      Nuestro asistente Lucky está listo para ayudarte. <br />
+                      Busca el ícono del chat en la esquina inferior derecha.
+                    </p>
+                  </div>
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <a
+                      href="mailto:contacto@luckyintelligence.com"
+                      className="btn-outline px-8 py-3 rounded-lg font-semibold inline-block"
+                    >
+                      O Enviar Email
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
             </motion.div>
           </div>
         </div>
