@@ -36,7 +36,7 @@ const LuckyNetFinder = () => {
   useEffect(() => {
     // Crear y agregar el script del widget de Goeva
     const script = document.createElement('script');
-    script.src = 'https://www.goeva.ai/widget.js';
+    script.src = 'https://app.goeva.ai/widget.js';
     script.async = true;
     
     // Configurar el widget
@@ -453,7 +453,7 @@ const LuckyNetFinder = () => {
                   {/* Goeva Chat Iframe */}
                   <div className="w-full max-w-md mx-auto">
                     <iframe 
-                      src="https://www.goeva.ai/widget?agent=73dbdf75-ce21-462a-ac9d-c0df95819bae&origin=https://www.goeva.ai"
+                      src="https://app.goeva.ai/widget?agent=73dbdf75-ce21-462a-ac9d-c0df95819bae&origin=https://app.goeva.ai"
                       width="100%"
                       height="600"
                       className="border-0 rounded-xl shadow-md"
