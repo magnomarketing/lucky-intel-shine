@@ -51,7 +51,7 @@ const ServicesGrid = () => {
     },
     {
       id: 6,
-      icon: '/icons/luckysecurityscan.svg',
+      icon: '/icons/luckyled.svg',
       title: "Lucky Led",
       description: "Soluciones LED para cualquier espacio. Desde tótems y kioscos hasta pantallas de gran formato, con la posibilidad de integrar experiencias impulsadas por inteligencia artificial.",
       tags: ["Tótems y kioscos", "Gran formato", "Experiencias con IA"]

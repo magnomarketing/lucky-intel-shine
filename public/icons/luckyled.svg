@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="led-gradient" x1="32" y1="-8" x2="32" y2="72" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3564f1"/>
+      <stop offset="1" stop-color="#1239ac"/>
+    </linearGradient>
+    <style>
+      .led-fill { fill: url(#led-gradient); }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <!-- Screen frame -->
+      <path class="led-fill" d="M56,6H8c-2.76,0-5,2.24-5,5v30c0,2.76,2.24,5,5,5h48c2.76,0,5-2.24,5-5V11c0-2.76-2.24-5-5-5ZM56,40.5c0,.83-.67,1.5-1.5,1.5H9.5c-.83,0-1.5-.67-1.5-1.5V11.5c0-.83.67-1.5,1.5-1.5h45c.83,0,1.5.67,1.5,1.5v29Z"/>
+      <!-- Stand -->
+      <path class="led-fill" d="M40,50h-16l-1.6,6.5h-3.4c-1.1,0-2,.9-2,2s.9,2,2,2h26c1.1,0,2-.9,2-2s-.9-2-2-2h-3.4l-1.6-6.5Z"/>
+      <!-- LED pixels -->
+      <circle class="led-fill" cx="16" cy="19" r="2.3"/>
+      <circle class="led-fill" cx="26.67" cy="19" r="2.3"/>
+      <circle class="led-fill" cx="37.33" cy="19" r="2.3"/>
+      <circle class="led-fill" cx="48" cy="19" r="2.3"/>
+      <circle class="led-fill" cx="16" cy="26" r="2.3"/>
+      <circle class="led-fill" cx="26.67" cy="26" r="2.3"/>
+      <circle class="led-fill" cx="37.33" cy="26" r="2.3"/>
+      <circle class="led-fill" cx="48" cy="26" r="2.3"/>
+      <circle class="led-fill" cx="16" cy="33" r="2.3"/>
+      <circle class="led-fill" cx="26.67" cy="33" r="2.3"/>
+      <circle class="led-fill" cx="37.33" cy="33" r="2.3"/>
+      <circle class="led-fill" cx="48" cy="33" r="2.3"/>
+    </g>
+  </g>
+</svg>
