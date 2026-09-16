@@ -7,25 +7,7 @@ const TechnologiesSection = () => {
             The technologies we work with:
           </h3>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-4xl mx-auto">
-            <div className="bg-card rounded-lg px-6 py-4 shadow-md border border-border text-center hover:shadow-lg transition-shadow">
-              <div className="text-lg font-bold text-gradient">
-                Xenko
-              </div>
-              <div className="text-xs text-muted-foreground mt-1">
-                Advanced Platform
-              </div>
-            </div>
-            
-            <div className="bg-card rounded-lg px-6 py-4 shadow-md border border-border text-center hover:shadow-lg transition-shadow">
-              <div className="text-lg font-bold text-gradient">
-                GoEva
-              </div>
-              <div className="text-xs text-muted-foreground mt-1">
-                Inteligencia Artificial
-              </div>
-            </div>
-            
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
             <div className="bg-card rounded-lg px-6 py-4 shadow-md border border-border text-center hover:shadow-lg transition-shadow">
               <div className="text-lg font-bold text-gradient">
                 Servnet

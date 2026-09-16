@@ -57,9 +57,9 @@ const Footer = () => {
             <div className="space-y-2 text-primary-foreground/80">
               <div>LuckyNet Finder</div>
               <div>Lucky Dashboard</div>
-              <div>Lucky Link Manager</div>
-              <div>LuckyIntelligence IA</div>
-              <div>Lucky Security Scan</div>
+              <div>Lucky Analytics</div>
+              <div>Lucky AI</div>
+              <div>Lucky Led</div>
             </div>
           </div>
 
