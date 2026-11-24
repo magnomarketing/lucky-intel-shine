@@ -8,12 +8,12 @@ import "./landing-isp.css";
 // La conversión de la campaña es el clic a WhatsApp (evento Contact del pixel).
 // Diseño: Hallmark, tema Dusk en papel claro con la paleta de Lucky (estilos en ./landing-isp.css, con alcance .hm).
 // Fotos: generadas con IA (Magnific) como sustitutos, en /public/landing-isp; se cambian por fotos reales.
-const WHATSAPP_NUMBER = "522299124066"; // Wicho
-const WHATSAPP_MESSAGE = "Hola, vi el anuncio de Lucky Net Finder. Quiero checar cobertura en: ";
+const WHATSAPP_NUMBER = "522299124066"; // José Luis (Wicho): contesta y manda la liga de la demo
+const WHATSAPP_MESSAGE = "Hola José Luis, vi el anuncio de Lucky Net Finder y quiero la demo.";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 const PHONE_DISPLAY = "229 912 4066";
 const PHONE_TEL = "+522299124066";
-const CTA_LABEL = "Verificar cobertura gratis";
+const CTA_LABEL = "Pide tu demo por WhatsApp";
 const IMG = "/landing-isp";
 const LOGO = "/lovable-uploads/610b27c6-0be9-43b4-b228-49811a215cec.png";
 const FONTS_HREF =
@@ -416,7 +416,7 @@ const LuckyNetFinderISP = () => {
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => trackContact("flotante")}
-          aria-label={`${CTA_LABEL} por WhatsApp`}
+          aria-label={CTA_LABEL}
           title={CTA_LABEL}
         >
           <WhatsAppIcon />
