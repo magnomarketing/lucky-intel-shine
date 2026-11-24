@@ -23,3 +23,10 @@ dist-ssr
 *.sln
 *.sw?
 .vercel
+
+# Contexto local del proyecto (no publicar)
+CLAUDE.local.md
+.claude/
+
+# Hallmark: capturas, respaldos y registros locales
+.hallmark/

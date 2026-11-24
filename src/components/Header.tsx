@@ -10,6 +10,7 @@ const Header = () => {
     { href: '/#inicio', label: 'Inicio' },
     { href: '/#servicios', label: 'Servicios' },
     { href: '/lucky-net-finder', label: 'Lucky Net Finder' },
+    { href: '/lucky-net-finder/isp', label: 'ISP y Wisperos' },
     { href: '/#soluciones', label: 'Soluciones' },
     { href: '/#nosotros', label: 'Nosotros' },
     { href: '/#contacto', label: 'Contacto' },
@@ -29,12 +30,12 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-6">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
+                className="text-foreground hover:text-primary transition-colors duration-200 font-medium whitespace-nowrap"
               >
                 {item.label}
               </a>
@@ -42,7 +43,7 @@ const Header = () => {
           </nav>
 
           {/* CTA Button */}
-          <div className="hidden md:block">
+          <div className="hidden xl:block">
             <a
               href="/#contacto"
               className="btn-primary px-6 py-2 rounded-md font-medium"
@@ -54,7 +55,7 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={toggleMenu}
-            className="md:hidden p-2 rounded-md hover:bg-secondary transition-colors"
+            className="lg:hidden p-2 rounded-md hover:bg-secondary transition-colors"
             aria-label="Toggle menu"
           >
             {isMenuOpen ? (
@@ -67,7 +68,7 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border">
+          <div className="lg:hidden py-4 border-t border-border">
             <nav className="flex flex-col space-y-4">
               {navItems.map((item) => (
                 <a

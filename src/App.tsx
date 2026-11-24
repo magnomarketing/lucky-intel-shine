@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import Privacy from "./pages/Privacy";
 import NotFound from "./pages/NotFound";
 import LuckyNetFinder from "./pages/LuckyNetFinder";
+import LuckyNetFinderISP from "./pages/LuckyNetFinderISP";
 
 const queryClient = new QueryClient();
 
@@ -19,6 +20,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/lucky-net-finder" element={<LuckyNetFinder />} />
+          <Route path="/lucky-net-finder/isp" element={<LuckyNetFinderISP />} />
           <Route path="/policies/privacy" element={<Privacy />} />
           <Route path="/policies/privacy/" element={<Privacy />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
